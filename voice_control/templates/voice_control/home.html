@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voice control</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+	
+	<div class="container text-center pt-4" style="max-width: 400px">
+		<h1>BUMart Voice Control System</h1>
+		<form action="/command" method="post">
+			{% csrf_token %}
+			<div class="form-group mt-5">
+			    <label for="fcmd">Enter the command:</label>
+			    <input type="text" class="form-control" placeholder="Enter email" id="fcmd" name="command">
+			</div>
+		</form>
+		<button id='mic' class="btn btn-outline-warning text-danger mt-5 rounded-circle" style='font-size:70px; width: 150px; height: 150px; border-width: 5px;' ><i class='fas fa-microphone-alt'></i></button>
+		
+	</div>
+
+
+	<script>
+		var bleep = new Audio();
+		bleep.src = "{% static 'voice_control/button-3.mp3'%}";
+
+		$("#mic").on('touchstart mousedown', function(e) {
+		    bleep.play();
+		});
+
+		$("#mic").on('touchend mouseup', function(e) {
+		    bleep.play();
+		});
+
+	</script>
+</body>
+</html>
