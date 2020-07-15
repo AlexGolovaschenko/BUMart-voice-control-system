@@ -2,9 +2,9 @@ import json
 
 def _normalize(str):
 	''' convert cpeech text to normilized command, like 
-	"включить ручное управление"
-	"включить вентилятор 1"
-	"положение клапан 1 (30%)"
+			"включить ручное управление"
+			"включить вентилятор 1"
+			"положение клапан 1 (30%)"
 	'''
 	cmd = ''
 	words = set(str.lower().split(' '))

@@ -1,0 +1,57 @@
+DEBUG:main:Programm started
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:executing command: отключить ручное управление
+DEBUG:main:executing parameters: [{'type': 'word', 'addr': 2040, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:executing command: отключить вентилятор 1
+DEBUG:main:executing parameters: [{'type': 'real', 'addr': 2042, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:executing command: отключить ручное управление
+DEBUG:main:executing parameters: [{'type': 'word', 'addr': 2080, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:executing command: отключить вентилятор 1
+DEBUG:main:executing parameters: [{'type': 'real', 'addr': 2042, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:executing command: отключить ручное управление
+DEBUG:main:executing parameters: [{'type': 'word', 'addr': 2080, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:executing command: отключить вентилятор 1
+DEBUG:main:executing parameters: [{'type': 'real', 'addr': 2042, 'value': 0}]
+DEBUG:main:executing done
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:executing command: включить ручное управление
+DEBUG:main:executing parameters: [{'type': 'word', 'addr': 2080, 'value': 1}]
+DEBUG:main:executing done
+DEBUG:main:executing command: включить вентилятор 1
+DEBUG:main:executing parameters: [{'type': 'real', 'addr': 2042, 'value': 100}]
+DEBUG:main:executing done
+DEBUG:main:Programm started
+DEBUG:main:connected to 10.6.2.245:502
+DEBUG:main:executing command: включить ручное управление
+DEBUG:main:executing parameters: [{'type': 'word', 'addr': 2080, 'value': 1}]
+DEBUG:main:executing done
+DEBUG:main:executing command: включить вентилятор 1
+DEBUG:main:executing parameters: [{'type': 'real', 'addr': 2042, 'value': 100}]
+DEBUG:main:executing done

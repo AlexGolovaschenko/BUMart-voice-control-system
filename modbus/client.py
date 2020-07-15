@@ -8,13 +8,17 @@ class WriteError(Exception):
     pass
 
 class ModbusTCPClient():
-	def __init__(self, host, port):
+	BIG_ENDIAN = False
+
+	def __init__(self, host, port, logger):
+		self.logger = logger
 		try:
 			self.client = ModbusClient(host=host, port=port, auto_open=True)
 		except ValueError:
-		    print("Error with host or port params = %s:%s" %(host, port))
+		    self.logger.error("Connection failed. Error with host or port params = %s:%s" %(host, port))
 		    raise
-		self.BIG_ENDIAN = False
+		self.logger.debug('connected to %s:%s' %(host, port))
+
 
 	def read_registers(self, addr, namber=1):
 		regs_list = self.client.read_holding_registers(addr, namber)
