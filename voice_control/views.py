@@ -1,29 +1,42 @@
 import time
-from django.shortcuts import render
-from .initial import executor
-from .initial import client
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from voice_control.initial import executor, client, logger
+from voice_control.modbus.client import WriteError
 
-def home(context):
-	return render(context, 'voice_control/home.html')
+def home(request):
+	return render(request, 'voice_control/home.html')
 
-def post_command(context):
+def post_command(request):
+	voice_command = str(request.POST.get('command', ''))
+	logger.debug('accepted command: ' + voice_command)
+	answer = _execute_commands(voice_command)
+	messages.add_message(request, messages.INFO, answer)
+	return redirect('voice:home')
+
+
+def _execute_commands(command):
 	# execute commands
-	voice_commands = [
-	    'отключить ручное управление',
-	    'отключить вентилятор 1'
-	    ]
+	answer = 'здесь ничего нет'
+	try:
+		answer = executor.execute(command)
+	except WriteError:
+		#try again 
+		logger.debug('modbus write attempt 2')
+		time.sleep(0.5)
+		try:
+			answer = executor.execute(command)
+		except WriteError:
+			#try again 
+			logger.debug('modbus write attempt 3')
+			time.sleep(0.5)
+			try:
+				answer = executor.execute(command)
+			except WriteError:
+				logger.debug('modbus write error')
+				answer = 'Ошибка записи регистров модбас'
+	except KeyError:
+		answer = 'Команда не распознана'
 
-	for c in voice_commands:
-		executor.execute(c)
-
-
-	# pause 2 secs befor reading
-	time.sleep(2)
-	# Read words
-	data = client.read_registers(2080)
-	print ('readed data: %s' %(data))
-	# Read floats
-	data = client.read_floats(2042)
-	print ('readed data: %s' %(data))
-
-	return render(context, 'voice_control/home.html')
+	logger.debug('executing commands')
+	return answer

@@ -1,5 +1,7 @@
 from django.urls import path
-from . import views
+from voice_control import views
+
+app_name = 'voice'
 
 urlpatterns = [
 	path('', views.home, name='home'),

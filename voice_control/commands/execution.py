@@ -1,4 +1,4 @@
-from .text_utils import command_to_modbus_parameters
+from .text_utils import command_to_modbus_parameters, get_answer
 from ..modbus.client import ReadError, WriteError
 from ..utils import utils
 
@@ -17,6 +17,7 @@ class VoiceCommandExecutor():
 		for p in set_parameters:
 			self._set_modbus_parameter(p)
 		self.logger.debug('executing done')
+		return get_answer(command)
 
 	def _set_modbus_parameter(self, parameter):
 		# parameter is dictionari like { "type": "real", "addr": 2042, "value": 100 }

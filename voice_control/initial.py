@@ -13,7 +13,7 @@ logger.debug('Programm started')
 # connect to device
 HOST = '10.6.2.245'
 PORT = 502
-client = ModbusTCPClient(HOST, PORT, logger)
+client = ModbusTCPClient(HOST, PORT, logger, timeout=2)
 
 
 # create command executor

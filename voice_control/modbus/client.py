@@ -10,13 +10,17 @@ class WriteError(Exception):
 class ModbusTCPClient():
 	BIG_ENDIAN = False
 
-	def __init__(self, host, port, logger):
+	def __init__(self, host, port, logger, *args, **kwargs):
 		self.logger = logger
 		try:
 			self.client = ModbusClient(host=host, port=port, auto_open=True)
+			try:
+				self.client.timeout(kwargs['timeout'])
+			except:
+				pass
 		except ValueError:
-		    self.logger.error("Connection failed. Error with host or port params = %s:%s" %(host, port))
-		    raise
+			self.logger.error("Connection failed. Error with host or port params = %s:%s" %(host, port))
+			raise
 		self.logger.debug('connected to %s:%s' %(host, port))
 
 
